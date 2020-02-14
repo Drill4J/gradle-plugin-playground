@@ -1,0 +1,15 @@
+name: play with drill gradle plguin (version)
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+
+  linux_job:
+    name: Check Linux platform
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: set
+        run: SET
