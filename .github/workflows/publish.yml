@@ -13,3 +13,5 @@ jobs:
       - uses: actions/checkout@v1
       - name: set
         run: set
+      - name: print
+        run: echo $GITHUB_REF
