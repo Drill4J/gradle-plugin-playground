@@ -17,3 +17,5 @@ jobs:
         run: |
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
+      - name: printVersion
+        run: gradle printVersion
