@@ -19,5 +19,6 @@ jobs:
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
           echo ${GITHUB_REF:11}
+          echo ${GITHUB_SHA:0:7}
       - name: printVersion
         run: gradle printVersion
