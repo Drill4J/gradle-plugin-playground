@@ -2,7 +2,7 @@ name: play with drill gradle plguin (version)
 on:
   push:
     tags:
-      - 'v*'
+      - 'v[0-9]*.[0-9]*.[0-9]*'
 
 jobs:
 
@@ -15,7 +15,9 @@ jobs:
         run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
       - name: Test
         run: |
+          git describe --tags --match v[0-9]*.[0-9]*.[0-9]*
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
+          echo ${GITHUB_REF:10}
       - name: printVersion
         run: gradle printVersion
