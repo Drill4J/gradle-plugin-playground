@@ -24,3 +24,9 @@ jobs:
         run: gradle -Pversion=${GITHUB_REF:11} printVersion
       - name: printVersion
         run: gradle printVersion
+      - name: script
+        run: |
+          cd .gradle
+          ls .
+          pwd
+          npm --version
