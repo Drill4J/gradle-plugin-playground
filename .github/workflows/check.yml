@@ -1,0 +1,29 @@
+name: Check stuff
+on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+
+jobs:
+  build_and_check:
+    name: Check Semver
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - id: next_prerelease
+        uses: Drill4J/semver-tag-action@rollup
+        with:
+          type: prerelease
+      - id: next_patch
+        uses: Drill4J/semver-tag-action@rollup
+        with:
+          type: patch
+      - uses: actions/hello-world-docker-action@master
+        with:
+          who-to-greet: ${{ steps.next_prerelease.outputs.tag }}
+      - uses: actions/hello-world-docker-action@master
+        with:
+          who-to-greet: ${{ steps.next_patch.outputs.tag }}
